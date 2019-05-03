@@ -2,7 +2,7 @@
 title: "BGGN213_Class9"
 author: "Yutao Wen"
 date: "5/1/2019"
-output: html_document
+output: github_document
 ---
 
 ```{r setup, include=FALSE}
