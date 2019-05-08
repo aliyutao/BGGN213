@@ -127,7 +127,5 @@ plot(pc.xray)
 ```{r}
 pc1 <- mktrj(pc.xray, pc=1, file="pc_1.pdb")
 view(pc1)
-library(rgl) 
-rglwidget(pc1)
 ```
 
