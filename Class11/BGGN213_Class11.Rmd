@@ -1,0 +1,133 @@
+---
+title: "BGGN213_Class11"
+author: "Yutao Wen"
+date: "5/8/2019"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Download a csv file from: https://www.rcsb.org/stats/summary on 19/5/8
+
+```{r}
+library(readr)
+Data_Export_Summary <- read_csv("Data Export Summary.csv")
+Data_Export_Summary
+```
+
+```{r}
+Data_Export_Summary[1,6]/sum(Data_Export_Summary$Total) * 100
+Data_Export_Summary[3,6]/sum(Data_Export_Summary$Total) * 100
+sum(Data_Export_Summary$Proteins)/sum(Data_Export_Summary$Total) * 100
+
+```
+
+Using Bio3D
+
+Read the PDB file we downloaded
+
+```{r}
+library(bio3d)
+```
+
+```{r}
+pdb <- read.pdb("1hsg.pdb")
+pdb
+```
+
+```{r}
+aa321(pdb$seqres)
+```
+
+```{r}
+pdb$atom
+```
+
+Atom selection examples
+
+```{r}
+inds <- atom.select(pdb, resno = 10)
+```
+
+```{r}
+pdb$atom[inds$atom,]
+```
+
+```{r}
+atom.select(pdb, resno = 10)
+atom.select(pdb, resno = 10, value = TRUE)
+```
+
+```{r}
+protein <- atom.select(pdb, string = "protein", value = TRUE)
+write.pdb(protein, file = "1hsg_protein")
+ligand <- atom.select(pdb, string = "ligand", value = TRUE)
+write.pdb(ligand, file = "ihsg_ligand")
+```
+
+
+```{r}
+#install.packages("devtools")
+#devtools::install_bitbucket("Grantlab/bio3d-view")
+```
+
+```{r}
+library("bio3d.view")
+view(pdb, "overview", col="sse")
+```
+
+Visualization by bio3D.view
+
+```{r}
+# Load the package
+pdb <- read.pdb("1hel")
+# Normal mode analysis calculation
+modes <- nma(pdb) 
+m7 <- mktrj(modes,
+            mode=7,
+            file="mode_7.pdb")
+view(m7, col=vec2color( rmsf(m7) ))
+```
+
+```{r}
+# Load the package
+pdb <- read.pdb("1pty")
+# Normal mode analysis calculation
+modes <- nma(pdb) 
+m7 <- mktrj(modes,
+            mode=7,
+            file="mode_7.pdb")
+view(m7, col=vec2color( rmsf(m7) ))
+```
+
+Working with multiple PDB files
+
+```{r}
+# Download some example PDB files
+ids <- c("1TND_B","1AGR_A","1TAG_A","1GG2_A","1KJY_A","4G5Q_A") 
+files <- get.pdb(ids, split = TRUE)
+```
+
+```{r}
+# Extract and align the chains we are interested in
+pdbs <- pdbaln(files, fit = TRUE)
+# Print to screen a summary of the 'pdbs' object
+pdbs
+view(pdbs)
+```
+
+
+```{r}
+pc.xray <- pca(pdbs)
+plot(pc.xray)
+```
+
+```{r}
+pc1 <- mktrj(pc.xray, pc=1, file="pc_1.pdb")
+view(pc1)
+library(rgl) 
+rglwidget(pc1)
+```
+
