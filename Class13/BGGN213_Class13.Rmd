@@ -1,0 +1,57 @@
+---
+title: "BGGN213_Class13"
+author: "Yutao Wen"
+date: "5/15/2019"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+mxl <- read.csv("373531-SampleGenotypes-Homo_sapiens_Variation_Sample_rs8067378.csv")
+```
+
+```{r}
+table(mxl$Genotype..forward.strand.)
+```
+
+Portion of G|G in total
+```{r}
+table(mxl$Genotype..forward.strand.)/nrow(mxl)
+```
+
+Quality scores in fastq file
+```{r}
+library(seqinr)
+library(gtools)
+asc(s2c("DDDDCDEDCDDDDBBDDDCC@")) - 33
+```
+
+```{r}
+geno <- read.table("rs8067378_ENSG00000172057.6.txt")
+sum <- summary(geno)
+```
+
+```{r}
+table(geno$geno)
+```
+
+```{r}
+inds <- (geno$geno=="G/G")
+geno[inds,]$exp
+summary(geno[inds,]$exp)
+```
+
+```{r}
+inds <- (geno$geno=="A/A")
+geno[inds,]$exp
+summary(geno[inds,]$exp)
+```
+
+A boxplot is drwan with notch shown when significant difference is observed between.
+```{r}
+boxplot(geno$exp ~ geno$geno, notch=TRUE)
+```
+
