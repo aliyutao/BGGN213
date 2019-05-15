@@ -1,0 +1,59 @@
+---
+title: "BGGN213_Class13"
+author: "Yutao Wen"
+date: "5/10/2019"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+We trimed the pdb file to get rid of water molecules and ligand
+
+```{r}
+library(bio3d)
+pdb <- get.pdb("1hsg")
+hiv <- read.pdb(pdb)
+hiv
+```
+
+We used AutoDocTools to add hydrogens and atom types
+
+```{r}
+prot <- atom.select(hiv, "protein", value = TRUE)
+lig <- atom.select(hiv, "ligand", value = TRUE)
+
+write.pdb(prot, file = "1hsg_protein.pdb")
+write.pdb(lig, file = "1hsg_ligand.pdb")
+
+read.pdb("1hsg_protein.pdb")
+read.pdb("1hsg_ligand.pdb")
+```
+
+Process results back in R
+```{r}
+res <- read.pdb("all.pdbqt", multi=TRUE) 
+res
+write.pdb(res, "results.pdb")
+```
+
+```{r}
+ori <- read.pdb("ligand.pdbqt")
+rmsd(ori, res)
+```
+
+Normal Mode Analysis Example
+
+```{r}
+pdb <- read.pdb("1hel")
+modes <- nma( pdb )
+m7 <- mktrj(modes, mode=7, file="mode_7.pdb")
+plot(modes)
+```
+
+```{r}
+library("bio3d.view")
+view(m7, col=vec2color(rmsf(m7)))
+```
+
