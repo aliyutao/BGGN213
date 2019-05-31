@@ -1,0 +1,93 @@
+---
+title: "BGGN213_Class18"
+author: "Yutao Wen"
+date: "5/31/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(GenomicDataCommons)
+library(TCGAbiolinks)
+library(maftools)
+```
+
+```{r}
+status()
+```
+
+```{r}
+projects <- getGDCprojects()
+head(projects)
+```
+
+```{r}
+cases_by_project <- cases() %>%
+  facet("project.project_id") %>%
+  aggregations()
+head(cases_by_project)
+```
+
+```{r}
+x <- cases_by_project$project.project_id
+```
+
+```{r}
+# Make a custom color vector for our plot
+colvec <- rep("lightblue", nrow(x))
+colvec[x$key=="TCGA-PAAD"] <- "red"
+```
+
+```{r}
+# Plot with 'log' for y axis and rotate labels with 'las'
+par(mar=c(9,4,2,2))  
+barplot(x$doc_count, names.arg=x$key, log="y", col=colvec, las=2)
+```
+
+```{r}
+library(bio3d)
+```
+
+
+```{r}
+align <- read.fasta("lecture18_sequences.fa")
+
+#Find gap in the alignment
+gaps <- gap.inspect(align)
+gap.ind <- gaps$t.inds
+
+#Find index of the mutation sites
+ali <- align$ali
+ind <- which(ali[1,]!=ali[2,])
+
+#Substract gap index from mutation index
+mut.ind <- ind[!ind %in% gap.ind]
+
+#Find subsequences that include all 9mers of the mutation sites
+start.ind <- mut.ind-8
+end.ind <- mut.ind+8
+for (i in 1:length(start.ind)) {
+  mutation <- seqbind(ali[2,start.ind[i]:end.ind[i]], mutation)
+}
+mutation
+
+```
+
+```{r}
+ide <- conserv(ali,method = "identity")
+ide
+```
+
+
+```{r}
+ali[,mut.ind]
+paste(ali[1,mut.ind],mut.ind,ali[2,mut.ind], sep = "")
+```
+
+```{r}
+write.fasta(mutation, file = "9mers of mutations.fa", ids = paste(ali[1,mut.ind],mut.ind,ali[2,mut.ind], sep = ""))
+```
+

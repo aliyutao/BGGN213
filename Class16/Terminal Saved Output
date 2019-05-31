@@ -1,0 +1,774 @@
+Last login: Fri May 24 13:02:36 on ttys000
+Yutaos-MacBook-Pro:~ yutaowen$ cd bggn213_01_unix
+Yutaos-MacBook-Pro:bggn213_01_unix yutaowen$ ls
+cd		myclasswork	projects
+Yutaos-MacBook-Pro:bggn213_01_unix yutaowen$ cd projects/
+Yutaos-MacBook-Pro:projects yutaowen$ ls
+transducin
+Yutaos-MacBook-Pro:projects yutaowen$ cd transducin/
+Yutaos-MacBook-Pro:transducin yutaowen$ ls
+sequences	structures
+Yutaos-MacBook-Pro:transducin yutaowen$ ls -G
+sequences  structures
+Yutaos-MacBook-Pro:transducin yutaowen$ alias ls="ls -G"
+Yutaos-MacBook-Pro:transducin yutaowen$ ls
+sequences  structures
+Yutaos-MacBook-Pro:transducin yutaowen$ cd sequences/
+Yutaos-MacBook-Pro:sequences yutaowen$ ls
+00README.md data        results     scripts
+Yutaos-MacBook-Pro:sequences yutaowen$ cd data
+Yutaos-MacBook-Pro:data yutaowen$ ls
+PF00503_seed.txt seqdump.fasta    single_seq.fa
+Yutaos-MacBook-Pro:data yutaowen$ grep --color "GESGKS" seqdump.fasta 
+REVKLLLLGAGESGKSTIVKQMKIIHEAGYSEEECKQYKAVVYSNTIQSIIAIIRAMGRLKIDFGDAARADDARQLFVLA
+Yutaos-MacBook-Pro:data yutaowen$ man grep
+Yutaos-MacBook-Pro:data yutaowen$ man grep
+Yutaos-MacBook-Pro:data yutaowen$ grep -v "^>" seqdump.fasta | grep --color "[^ATGC]"
+REVKLLLLGAGESGKSTIVKQMKIIHEAGYSEEECKQYKAVVYSNTIQSIIAIIRAMGRLKIDFGDAARADDARQLFVLA
+GAAEEGFMTAELAGVIKRLWKDSGVQACFNRSREYQLNDSAAYYLNDLDRIAQPNYIPTQQDVLRTRVKTTGIVETHFT
+KDLHFKMFDVGAQRSERKKWIHCFEGVTAIIFCVALSDYDLVLAEDEEMNRMHESMKLFDSICNNKWFTDTSIILFLNK
+DLFEEKIKKSPLTICYPEYAGSNTYEEAAAYIQCQFEDLNKRKDTKEIYTHFTCATDTKNVQFVFDAVTDVIIKNNL
+Yutaos-MacBook-Pro:data yutaowen$ grep -v "^>" seqdump.fasta | grep --color -n "[^ATGC]"
+2973:REVKLLLLGAGESGKSTIVKQMKIIHEAGYSEEECKQYKAVVYSNTIQSIIAIIRAMGRLKIDFGDAARADDARLFVLA
+2974:GAAEEGFMTAELAGVIKRLWKDSGVQACFNRSREYQLNDSAAYYLNDLDRIAQPNYIPTQQDVLRTRVKTTGIVTHFTF
+2975:KDLHFKMFDVGAQRSERKKWIHCFEGVTAIIFCVALSDYDLVLAEDEEMNRMHESMKLFDSICNNKWFTDTSIIFLNKK
+2976:DLFEEKIKKSPLTICYPEYAGSNTYEEAAAYIQCQFEDLNKRKDTKEIYTHFTCATDTKNVQFVFDAVTDVIIKNL
+Yutaos-MacBook-Pro:data yutaowen$ ls
+PF00503_seed.txt seqdump.fasta    single_seq.fa
+Yutaos-MacBook-Pro:data yutaowen$ ls -G
+PF00503_seed.txt seqdump.fasta    single_seq.fa
+Yutaos-MacBook-Pro:data yutaowen$ cd
+Yutaos-MacBook-Pro:~ yutaowen$ ls
+1hsg_protein.pdbqt            Downloads                     MyWorkArea                    __MACOSX                      vmdscene.tga
+2lbu.cif                      Library                       PTPRA Protein standardization bggn213_01_unix
+Desktop                       Movies                        Pictures                      bggn213_01_unix.zip
+Documents                     Music                         Public                        ligand.pdbqt
+Yutaos-MacBook-Pro:~ yutaowen$ clear
+
+
+
+
+Yutaos-MacBook-Pro:~ yutaowen$ cd
+Yutaos-MacBook-Pro:~ yutaowen$ mv ~/Downloads/bggn213_private_key .
+Yutaos-MacBook-Pro:~ yutaowen$ ls
+1hsg_protein.pdbqt            Downloads                     MyWorkArea                    __MACOSX                      ligand.pdbqt
+2lbu.cif                      Library                       PTPRA Protein standardization bggn213_01_unix               vmdscene.tga
+Desktop                       Movies                        Pictures                      bggn213_01_unix.zip
+Documents                     Music                         Public                        bggn213_private_key
+Yutaos-MacBook-Pro:~ yutaowen$ chmod 600 bggn213_private_key 
+Yutaos-MacBook-Pro:~ yutaowen$ ssh -i bggn213_private_key tb170077@129.114.16.123
+The authenticity of host '129.114.16.123 (129.114.16.123)' can't be established.
+ECDSA key fingerprint is SHA256:wJjZ3latzUqcMhuRx9rH6XizGV/3mynuv6rz6irPvsU.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '129.114.16.123' (ECDSA) to the list of known hosts.
+Welcome to Ubuntu 18.04.2 LTS (GNU/Linux 4.15.0-50-generic x86_64)
+
+  System information as of Fri May 24 17:00:20 CDT 2019
+
+  System load:  0.0               Processes:           172
+  Usage of /:   65.5% of 7.58GB   Users logged in:     0
+  Memory usage: 23%               IP address for ens3: 172.22.87.12
+  Swap usage:   0%
+
+ * Read about Ubuntu updates for L1 Terminal Fault Vulnerabilities
+   (L1TF).
+
+   - https://ubu.one/L1TF
+
+ * Check out 6 great IDEs now available on Ubuntu. There may even be
+   something worthwhile there for those crazy EMACS fans ;)
+
+   - https://bit.ly/6-cool-IDEs
+
+  Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+
+3 packages can be updated.
+1 update is a security update.
+
+
+Welcome to
+    _   _                             _
+   / \ | |_ _ __ ___   ___  ___ _ __ | |__   ___ _ __ ___
+  / _ \| __| '_ ` _ \ / _ \/ __| '_ \| '_ \ / _ \ '__/ _ \
+ / ___ \ |_| | | | | | (_) \__ \ |_) | | | |  __/ | |  __/
+/_/   \_\__|_| |_| |_|\___/|___/ .__/|_| |_|\___|_|  \___|
+                               |_|
+tb170077@js-16-123:~$ whoami
+tb170077
+tb170077@js-16-123:~$ pwd
+/home/tb170077
+tb170077@js-16-123:~$ sudo apt-get update
+Get:1 http://security.ubuntu.com/ubuntu bionic-security InRelease [88.7 kB]
+Hit:2 http://ppa.launchpad.net/ansible/ansible/ubuntu bionic InRelease                                                       
+Ign:3 https://packages.irods.org/apt xenial InRelease                                                                                               
+Hit:4 https://packages.irods.org/apt xenial Release                                                                                                 
+Hit:6 http://nova.clouds.archive.ubuntu.com/ubuntu bionic InRelease                                                           
+Get:7 http://nova.clouds.archive.ubuntu.com/ubuntu bionic-updates InRelease [88.7 kB]
+Hit:8 http://nova.clouds.archive.ubuntu.com/ubuntu bionic-backports InRelease
+Get:9 http://nova.clouds.archive.ubuntu.com/ubuntu bionic-updates/main amd64 Packages [618 kB]
+Get:10 http://nova.clouds.archive.ubuntu.com/ubuntu bionic-updates/universe amd64 Packages [937 kB]
+Fetched 1732 kB in 2s (916 kB/s)                         
+Reading package lists... Done
+tb170077@js-16-123:~$ sudo apt-get -y install python ncbi-blast+
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+python is already the newest version (2.7.15~rc1-1).
+ncbi-blast+ is already the newest version (2.6.0-1).
+0 upgraded, 0 newly installed, 0 to remove and 1 not upgraded.
+tb170077@js-16-123:~$ cd
+tb170077@js-16-123:~$ sudo apt-get -y install fastqc
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following additional packages will be installed:
+  ca-certificates-java default-jre default-jre-headless fonts-dejavu-extra java-common libapache-pom-java libatk-wrapper-java libatk-wrapper-java-jni
+  libcommons-compress-java libcommons-jexl2-java libcommons-logging-java libcommons-math3-java libcommons-parent-java libhtsjdk-java libjbzip2-java libngs-java
+  libngs-sdk-dev libngs-sdk1 libpcsclite1 libsnappy-java libsnappy-jni libsnappy1v5 libxz-java openjdk-11-jre openjdk-11-jre-headless
+Suggested packages:
+  libcommons-jexl2-java-doc libavalon-framework-java libcommons-logging-java-doc libexcalibur-logkit-java liblog4j1.2-java picard-tools pcscd libnss-mdns
+  fonts-ipafont-gothic fonts-ipafont-mincho fonts-wqy-microhei | fonts-wqy-zenhei fonts-indic
+The following NEW packages will be installed:
+  ca-certificates-java default-jre default-jre-headless fastqc fonts-dejavu-extra java-common libapache-pom-java libatk-wrapper-java libatk-wrapper-java-jni
+  libcommons-compress-java libcommons-jexl2-java libcommons-logging-java libcommons-math3-java libcommons-parent-java libhtsjdk-java libjbzip2-java libngs-java
+  libngs-sdk-dev libngs-sdk1 libpcsclite1 libsnappy-java libsnappy-jni libsnappy1v5 libxz-java openjdk-11-jre openjdk-11-jre-headless
+0 upgraded, 26 newly installed, 0 to remove and 1 not upgraded.
+Need to get 44.4 MB of archives.
+After this operation, 186 MB of additional disk space will be used.
+Get:1 http://nova.clouds.archive.ubuntu.com/ubuntu bionic-updates/main amd64 java-common all 0.68ubuntu1~18.04.1 [14.5 kB]
+Get:2 http://nova.clouds.archive.ubuntu.com/ubuntu bionic/main amd64 libpcsclite1 amd64 1.8.23-1 [21.3 kB]
+Get:3 http://nova.clouds.archive.ubuntu.com/ubuntu bionic-updates/main amd64 openjdk-11-jre-headless amd64 11.0.3+7-1ubuntu2~18.04.1 [37.1 MB]
+Get:4 http://nova.clouds.archive.ubuntu.com/ubuntu bionic-updates/main amd64 default-jre-headless amd64 2:1.11-68ubuntu1~18.04.1 [10.9 kB]
+Get:5 http://nova.clouds.archive.ubuntu.com/ubuntu bionic-updates/main amd64 ca-certificates-java all 20180516ubuntu1~18.04.1 [12.2 kB]
+Get:6 http://nova.clouds.archive.ubuntu.com/ubuntu bionic-updates/main amd64 openjdk-11-jre amd64 11.0.3+7-1ubuntu2~18.04.1 [34.5 kB]
+Get:7 http://nova.clouds.archive.ubuntu.com/ubuntu bionic-updates/main amd64 default-jre amd64 2:1.11-68ubuntu1~18.04.1 [1076 B]
+Get:8 http://nova.clouds.archive.ubuntu.com/ubuntu bionic/universe amd64 libcommons-math3-java all 3.6.1-3 [2016 kB]
+Get:9 http://nova.clouds.archive.ubuntu.com/ubuntu bionic/universe amd64 libjbzip2-java all 0.9.1-4 [42.6 kB]
+Get:10 http://nova.clouds.archive.ubuntu.com/ubuntu bionic/universe amd64 libapache-pom-java all 18-1 [4720 B]
+Get:11 http://nova.clouds.archive.ubuntu.com/ubuntu bionic/universe amd64 libcommons-parent-java all 43-1 [10.8 kB]
+Get:12 http://nova.clouds.archive.ubuntu.com/ubuntu bionic-updates/universe amd64 libcommons-compress-java all 1.18-1~18.04 [531 kB]
+Get:13 http://nova.clouds.archive.ubuntu.com/ubuntu bionic/universe amd64 libcommons-logging-java all 1.2-2 [60.3 kB]
+Get:14 http://nova.clouds.archive.ubuntu.com/ubuntu bionic/universe amd64 libcommons-jexl2-java all 2.1.1-4 [252 kB]
+Get:15 http://nova.clouds.archive.ubuntu.com/ubuntu bionic/universe amd64 libngs-sdk1 amd64 1.3.0-3 [52.3 kB]
+Get:16 http://nova.clouds.archive.ubuntu.com/ubuntu bionic/universe amd64 libngs-sdk-dev amd64 1.3.0-3 [92.8 kB]
+Get:17 http://nova.clouds.archive.ubuntu.com/ubuntu bionic/universe amd64 libngs-java amd64 1.3.0-3 [76.4 kB]
+Get:18 http://nova.clouds.archive.ubuntu.com/ubuntu bionic/main amd64 libsnappy1v5 amd64 1.1.7-1 [16.0 kB]
+Get:19 http://nova.clouds.archive.ubuntu.com/ubuntu bionic/universe amd64 libsnappy-jni amd64 1.1.4-1 [6996 B]
+Get:20 http://nova.clouds.archive.ubuntu.com/ubuntu bionic/universe amd64 libsnappy-java all 1.1.4-1 [67.2 kB]
+Get:21 http://nova.clouds.archive.ubuntu.com/ubuntu bionic/universe amd64 libxz-java all 1.8-1 [134 kB]
+Get:22 http://nova.clouds.archive.ubuntu.com/ubuntu bionic/universe amd64 libhtsjdk-java all 2.8.1+dfsg-2 [1438 kB]
+Get:23 http://nova.clouds.archive.ubuntu.com/ubuntu bionic/universe amd64 fastqc all 0.11.5+dfsg-6 [354 kB]
+Get:24 http://nova.clouds.archive.ubuntu.com/ubuntu bionic/main amd64 fonts-dejavu-extra all 2.37-1 [1953 kB]
+Get:25 http://nova.clouds.archive.ubuntu.com/ubuntu bionic/main amd64 libatk-wrapper-java all 0.33.3-20ubuntu0.1 [34.7 kB]
+Get:26 http://nova.clouds.archive.ubuntu.com/ubuntu bionic/main amd64 libatk-wrapper-java-jni amd64 0.33.3-20ubuntu0.1 [28.3 kB]
+Fetched 44.4 MB in 6s (7465 kB/s)              
+Selecting previously unselected package java-common.
+(Reading database ... 183638 files and directories currently installed.)
+Preparing to unpack .../00-java-common_0.68ubuntu1~18.04.1_all.deb ...
+Unpacking java-common (0.68ubuntu1~18.04.1) ...
+Selecting previously unselected package libpcsclite1:amd64.
+Preparing to unpack .../01-libpcsclite1_1.8.23-1_amd64.deb ...
+Unpacking libpcsclite1:amd64 (1.8.23-1) ...
+Selecting previously unselected package openjdk-11-jre-headless:amd64.
+Preparing to unpack .../02-openjdk-11-jre-headless_11.0.3+7-1ubuntu2~18.04.1_amd64.deb ...
+Unpacking openjdk-11-jre-headless:amd64 (11.0.3+7-1ubuntu2~18.04.1) ...
+Selecting previously unselected package default-jre-headless.
+Preparing to unpack .../03-default-jre-headless_2%3a1.11-68ubuntu1~18.04.1_amd64.deb ...
+Unpacking default-jre-headless (2:1.11-68ubuntu1~18.04.1) ...
+Selecting previously unselected package ca-certificates-java.
+Preparing to unpack .../04-ca-certificates-java_20180516ubuntu1~18.04.1_all.deb ...
+Unpacking ca-certificates-java (20180516ubuntu1~18.04.1) ...
+Selecting previously unselected package openjdk-11-jre:amd64.
+Preparing to unpack .../05-openjdk-11-jre_11.0.3+7-1ubuntu2~18.04.1_amd64.deb ...
+Unpacking openjdk-11-jre:amd64 (11.0.3+7-1ubuntu2~18.04.1) ...
+Selecting previously unselected package default-jre.
+Preparing to unpack .../06-default-jre_2%3a1.11-68ubuntu1~18.04.1_amd64.deb ...
+Unpacking default-jre (2:1.11-68ubuntu1~18.04.1) ...
+Selecting previously unselected package libcommons-math3-java.
+Preparing to unpack .../07-libcommons-math3-java_3.6.1-3_all.deb ...
+Unpacking libcommons-math3-java (3.6.1-3) ...
+Selecting previously unselected package libjbzip2-java.
+Preparing to unpack .../08-libjbzip2-java_0.9.1-4_all.deb ...
+Unpacking libjbzip2-java (0.9.1-4) ...
+Selecting previously unselected package libapache-pom-java.
+Preparing to unpack .../09-libapache-pom-java_18-1_all.deb ...
+Unpacking libapache-pom-java (18-1) ...
+Selecting previously unselected package libcommons-parent-java.
+Preparing to unpack .../10-libcommons-parent-java_43-1_all.deb ...
+Unpacking libcommons-parent-java (43-1) ...
+Selecting previously unselected package libcommons-compress-java.
+Preparing to unpack .../11-libcommons-compress-java_1.18-1~18.04_all.deb ...
+Unpacking libcommons-compress-java (1.18-1~18.04) ...
+Selecting previously unselected package libcommons-logging-java.
+Preparing to unpack .../12-libcommons-logging-java_1.2-2_all.deb ...
+Unpacking libcommons-logging-java (1.2-2) ...
+Selecting previously unselected package libcommons-jexl2-java.
+Preparing to unpack .../13-libcommons-jexl2-java_2.1.1-4_all.deb ...
+Unpacking libcommons-jexl2-java (2.1.1-4) ...
+Selecting previously unselected package libngs-sdk1.
+Preparing to unpack .../14-libngs-sdk1_1.3.0-3_amd64.deb ...
+Unpacking libngs-sdk1 (1.3.0-3) ...
+Selecting previously unselected package libngs-sdk-dev.
+Preparing to unpack .../15-libngs-sdk-dev_1.3.0-3_amd64.deb ...
+Unpacking libngs-sdk-dev (1.3.0-3) ...
+Selecting previously unselected package libngs-java.
+Preparing to unpack .../16-libngs-java_1.3.0-3_amd64.deb ...
+Unpacking libngs-java (1.3.0-3) ...
+Selecting previously unselected package libsnappy1v5:amd64.
+Preparing to unpack .../17-libsnappy1v5_1.1.7-1_amd64.deb ...
+Unpacking libsnappy1v5:amd64 (1.1.7-1) ...
+Selecting previously unselected package libsnappy-jni.
+Preparing to unpack .../18-libsnappy-jni_1.1.4-1_amd64.deb ...
+Unpacking libsnappy-jni (1.1.4-1) ...
+Selecting previously unselected package libsnappy-java.
+Preparing to unpack .../19-libsnappy-java_1.1.4-1_all.deb ...
+Unpacking libsnappy-java (1.1.4-1) ...
+Selecting previously unselected package libxz-java.
+Preparing to unpack .../20-libxz-java_1.8-1_all.deb ...
+Unpacking libxz-java (1.8-1) ...
+Selecting previously unselected package libhtsjdk-java.
+Preparing to unpack .../21-libhtsjdk-java_2.8.1+dfsg-2_all.deb ...
+Unpacking libhtsjdk-java (2.8.1+dfsg-2) ...
+Selecting previously unselected package fastqc.
+Preparing to unpack .../22-fastqc_0.11.5+dfsg-6_all.deb ...
+Unpacking fastqc (0.11.5+dfsg-6) ...
+Selecting previously unselected package fonts-dejavu-extra.
+Preparing to unpack .../23-fonts-dejavu-extra_2.37-1_all.deb ...
+Unpacking fonts-dejavu-extra (2.37-1) ...
+Selecting previously unselected package libatk-wrapper-java.
+Preparing to unpack .../24-libatk-wrapper-java_0.33.3-20ubuntu0.1_all.deb ...
+Unpacking libatk-wrapper-java (0.33.3-20ubuntu0.1) ...
+Selecting previously unselected package libatk-wrapper-java-jni:amd64.
+Preparing to unpack .../25-libatk-wrapper-java-jni_0.33.3-20ubuntu0.1_amd64.deb ...
+Unpacking libatk-wrapper-java-jni:amd64 (0.33.3-20ubuntu0.1) ...
+Processing triggers for mime-support (3.60ubuntu1) ...
+Processing triggers for desktop-file-utils (0.23-1ubuntu3.18.04.2) ...
+Setting up libpcsclite1:amd64 (1.8.23-1) ...
+Setting up java-common (0.68ubuntu1~18.04.1) ...
+Setting up libcommons-math3-java (3.6.1-3) ...
+Setting up libjbzip2-java (0.9.1-4) ...
+Setting up libngs-sdk1 (1.3.0-3) ...
+Setting up libngs-sdk-dev (1.3.0-3) ...
+Setting up libxz-java (1.8-1) ...
+Processing triggers for libc-bin (2.27-3ubuntu1) ...
+Setting up libsnappy1v5:amd64 (1.1.7-1) ...
+Setting up libapache-pom-java (18-1) ...
+Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
+Setting up fonts-dejavu-extra (2.37-1) ...
+Processing triggers for ca-certificates (20180409) ...
+Updating certificates in /etc/ssl/certs...
+0 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d...
+done.
+Setting up libatk-wrapper-java (0.33.3-20ubuntu0.1) ...
+Processing triggers for hicolor-icon-theme (0.17-2) ...
+Processing triggers for fontconfig (2.12.6-0ubuntu2) ...
+Setting up libngs-java (1.3.0-3) ...
+Setting up libsnappy-jni (1.1.4-1) ...
+Setting up libcommons-parent-java (43-1) ...
+Setting up libatk-wrapper-java-jni:amd64 (0.33.3-20ubuntu0.1) ...
+Setting up libcommons-compress-java (1.18-1~18.04) ...
+Setting up libsnappy-java (1.1.4-1) ...
+Setting up libcommons-logging-java (1.2-2) ...
+Setting up libcommons-jexl2-java (2.1.1-4) ...
+Setting up libhtsjdk-java (2.8.1+dfsg-2) ...
+Setting up openjdk-11-jre-headless:amd64 (11.0.3+7-1ubuntu2~18.04.1) ...
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/rmid to provide /usr/bin/rmid (rmid) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/java to provide /usr/bin/java (java) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/keytool to provide /usr/bin/keytool (keytool) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/jjs to provide /usr/bin/jjs (jjs) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/pack200 to provide /usr/bin/pack200 (pack200) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/rmiregistry to provide /usr/bin/rmiregistry (rmiregistry) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/unpack200 to provide /usr/bin/unpack200 (unpack200) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/lib/jexec to provide /usr/bin/jexec (jexec) in auto mode
+Setting up default-jre-headless (2:1.11-68ubuntu1~18.04.1) ...
+Setting up openjdk-11-jre:amd64 (11.0.3+7-1ubuntu2~18.04.1) ...
+Setting up ca-certificates-java (20180516ubuntu1~18.04.1) ...
+head: cannot open '/etc/ssl/certs/java/cacerts' for reading: No such file or directory
+Adding debian:Comodo_AAA_Services_root.pem
+Adding debian:GeoTrust_Primary_Certification_Authority.pem
+Adding debian:EE_Certification_Centre_Root_CA.pem
+Adding debian:AffirmTrust_Premium.pem
+Adding debian:GeoTrust_Primary_Certification_Authority_-_G2.pem
+Adding debian:Sonera_Class_2_Root_CA.pem
+Adding debian:SwissSign_Gold_CA_-_G2.pem
+Adding debian:TWCA_Global_Root_CA.pem
+Adding debian:Visa_eCommerce_Root.pem
+Adding debian:NetLock_Arany_=Class_Gold=_Főtanúsítvány.pem
+Adding debian:Deutsche_Telekom_Root_CA_2.pem
+Adding debian:Taiwan_GRCA.pem
+Adding debian:Cybertrust_Global_Root.pem
+Adding debian:QuoVadis_Root_CA_1_G3.pem
+Adding debian:DigiCert_Global_Root_G3.pem
+Adding debian:Amazon_Root_CA_3.pem
+Adding debian:QuoVadis_Root_CA_2.pem
+Adding debian:Certplus_Class_2_Primary_CA.pem
+Adding debian:GlobalSign_Root_CA_-_R3.pem
+Adding debian:DigiCert_Assured_ID_Root_G2.pem
+Adding debian:SSL.com_EV_Root_Certification_Authority_RSA_R2.pem
+Adding debian:Staat_der_Nederlanden_Root_CA_-_G3.pem
+Adding debian:OpenTrust_Root_CA_G2.pem
+Adding debian:QuoVadis_Root_CA_2_G3.pem
+Adding debian:Certigna.pem
+Adding debian:Buypass_Class_2_Root_CA.pem
+Adding debian:GlobalSign_Root_CA_-_R2.pem
+Adding debian:Security_Communication_RootCA2.pem
+Adding debian:Staat_der_Nederlanden_Root_CA_-_G2.pem
+Adding debian:Atos_TrustedRoot_2011.pem
+Adding debian:SZAFIR_ROOT_CA2.pem
+Adding debian:EC-ACC.pem
+Adding debian:DigiCert_Global_Root_G2.pem
+Adding debian:DigiCert_Global_Root_CA.pem
+Adding debian:Amazon_Root_CA_1.pem
+Adding debian:OpenTrust_Root_CA_G1.pem
+Adding debian:Certplus_Root_CA_G2.pem
+Adding debian:VeriSign_Class_3_Public_Primary_Certification_Authority_-_G4.pem
+Adding debian:Verisign_Class_3_Public_Primary_Certification_Authority_-_G3.pem
+Adding debian:Network_Solutions_Certificate_Authority.pem
+Adding debian:Microsec_e-Szigno_Root_CA_2009.pem
+Adding debian:SecureSign_RootCA11.pem
+Adding debian:Buypass_Class_3_Root_CA.pem
+Adding debian:COMODO_RSA_Certification_Authority.pem
+Adding debian:E-Tugra_Certification_Authority.pem
+Adding debian:Secure_Global_CA.pem
+Adding debian:GlobalSign_ECC_Root_CA_-_R4.pem
+Adding debian:GDCA_TrustAUTH_R5_ROOT.pem
+Adding debian:Certum_Trusted_Network_CA.pem
+Adding debian:GeoTrust_Universal_CA.pem
+Adding debian:AddTrust_External_Root.pem
+Adding debian:QuoVadis_Root_CA.pem
+Adding debian:COMODO_Certification_Authority.pem
+Adding debian:TÜRKTRUST_Elektronik_Sertifika_Hizmet_Sağlayıcısı_H5.pem
+Adding debian:IdenTrust_Public_Sector_Root_CA_1.pem
+Adding debian:T-TeleSec_GlobalRoot_Class_3.pem
+Adding debian:ACCVRAIZ1.pem
+Adding debian:T-TeleSec_GlobalRoot_Class_2.pem
+Adding debian:CFCA_EV_ROOT.pem
+Adding debian:OISTE_WISeKey_Global_Root_GA_CA.pem
+Adding debian:Entrust.net_Premium_2048_Secure_Server_CA.pem
+Adding debian:Security_Communication_Root_CA.pem
+Adding debian:TWCA_Root_Certification_Authority.pem
+Adding debian:TUBITAK_Kamu_SM_SSL_Kok_Sertifikasi_-_Surum_1.pem
+Adding debian:Certinomis_-_Root_CA.pem
+Adding debian:OpenTrust_Root_CA_G3.pem
+Adding debian:Entrust_Root_Certification_Authority_-_G2.pem
+Adding debian:Izenpe.com.pem
+Adding debian:SSL.com_Root_Certification_Authority_RSA.pem
+Adding debian:Entrust_Root_Certification_Authority_-_EC1.pem
+Adding debian:VeriSign_Universal_Root_Certification_Authority.pem
+Adding debian:DigiCert_Assured_ID_Root_G3.pem
+Adding debian:Starfield_Class_2_CA.pem
+Adding debian:Go_Daddy_Root_Certificate_Authority_-_G2.pem
+Adding debian:GeoTrust_Global_CA.pem
+Adding debian:Starfield_Root_Certificate_Authority_-_G2.pem
+Adding debian:USERTrust_ECC_Certification_Authority.pem
+Adding debian:VeriSign_Class_3_Public_Primary_Certification_Authority_-_G5.pem
+Adding debian:QuoVadis_Root_CA_3.pem
+Adding debian:Trustis_FPS_Root_CA.pem
+Adding debian:Amazon_Root_CA_2.pem
+Adding debian:Certplus_Root_CA_G1.pem
+Adding debian:GlobalSign_ECC_Root_CA_-_R5.pem
+Adding debian:Entrust_Root_Certification_Authority.pem
+Adding debian:Hellenic_Academic_and_Research_Institutions_RootCA_2015.pem
+Adding debian:AffirmTrust_Commercial.pem
+Adding debian:CA_Disig_Root_R2.pem
+Adding debian:USERTrust_RSA_Certification_Authority.pem
+Adding debian:TeliaSonera_Root_CA_v1.pem
+Adding debian:AffirmTrust_Premium_ECC.pem
+Adding debian:QuoVadis_Root_CA_3_G3.pem
+Adding debian:TrustCor_ECA-1.pem
+Adding debian:DST_Root_CA_X3.pem
+Adding debian:D-TRUST_Root_Class_3_CA_2_EV_2009.pem
+Adding debian:Chambers_of_Commerce_Root_-_2008.pem
+Adding debian:ISRG_Root_X1.pem
+Adding debian:DigiCert_Trusted_Root_G4.pem
+Adding debian:Starfield_Services_Root_Certificate_Authority_-_G2.pem
+Adding debian:certSIGN_ROOT_CA.pem
+Adding debian:IdenTrust_Commercial_Root_CA_1.pem
+Adding debian:Certum_Trusted_Network_CA_2.pem
+Adding debian:AffirmTrust_Networking.pem
+Adding debian:Hellenic_Academic_and_Research_Institutions_ECC_RootCA_2015.pem
+Adding debian:thawte_Primary_Root_CA_-_G2.pem
+Adding debian:GlobalSign_Root_CA.pem
+Adding debian:D-TRUST_Root_Class_3_CA_2_2009.pem
+Adding debian:Hongkong_Post_Root_CA_1.pem
+Adding debian:Hellenic_Academic_and_Research_Institutions_RootCA_2011.pem
+Adding debian:GeoTrust_Universal_CA_2.pem
+Adding debian:SSL.com_Root_Certification_Authority_ECC.pem
+Adding debian:Baltimore_CyberTrust_Root.pem
+Adding debian:Autoridad_de_Certificacion_Firmaprofesional_CIF_A62634068.pem
+Adding debian:TrustCor_RootCert_CA-2.pem
+Adding debian:XRamp_Global_CA_Root.pem
+Adding debian:Actalis_Authentication_Root_CA.pem
+Adding debian:Staat_der_Nederlanden_EV_Root_CA.pem
+Adding debian:SecureTrust_CA.pem
+Adding debian:OISTE_WISeKey_Global_Root_GB_CA.pem
+Adding debian:TrustCor_RootCert_CA-1.pem
+Adding debian:SSL.com_EV_Root_Certification_Authority_ECC.pem
+Adding debian:LuxTrust_Global_Root_2.pem
+Adding debian:GeoTrust_Primary_Certification_Authority_-_G3.pem
+Adding debian:ePKI_Root_Certification_Authority.pem
+Adding debian:Go_Daddy_Class_2_CA.pem
+Adding debian:thawte_Primary_Root_CA.pem
+Adding debian:DigiCert_High_Assurance_EV_Root_CA.pem
+Adding debian:Amazon_Root_CA_4.pem
+Adding debian:DigiCert_Assured_ID_Root_CA.pem
+Adding debian:Global_Chambersign_Root_-_2008.pem
+Adding debian:thawte_Primary_Root_CA_-_G3.pem
+Adding debian:SwissSign_Silver_CA_-_G2.pem
+Adding debian:AC_RAIZ_FNMT-RCM.pem
+Adding debian:COMODO_ECC_Certification_Authority.pem
+done.
+Setting up fastqc (0.11.5+dfsg-6) ...
+Setting up default-jre (2:1.11-68ubuntu1~18.04.1) ...
+Processing triggers for libc-bin (2.27-3ubuntu1) ...
+Processing triggers for ca-certificates (20180409) ...
+Updating certificates in /etc/ssl/certs...
+0 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d...
+
+done.
+done.
+tb170077@js-16-123:~$ blastp
+BLAST query/options error: Either a BLAST database or subject sequence(s) must be specified
+Please refer to the BLAST+ user manual.
+tb170077@js-16-123:~$ cd
+tb170077@js-16-123:~$ mkdir work
+tb170077@js-16-123:~$ cd work
+tb170077@js-16-123:~/work$ pwd
+/home/tb170077/work
+tb170077@js-16-123:~/work$ curl -O ftp://ftp.ncbi.nih.gov/refseq/M_musculus/mRNA_Prot/mouse.1.protein.faa.gz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 9100k  100 9100k    0     0  3462k      0  0:00:02  0:00:02 --:--:-- 3461k
+tb170077@js-16-123:~/work$ 
+tb170077@js-16-123:~/work$ curl -O ftp://ftp.ncbi.nih.gov/refseq/M_musculus/mRNA_Prot/mouse.2.protein.faa.gz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 8342k  100 8342k    0     0  5392k      0  0:00:01  0:00:01 --:--:-- 5392k
+tb170077@js-16-123:~/work$ 
+tb170077@js-16-123:~/work$ curl -O ftp://ftp.ncbi.nih.gov/refseq/D_rerio/mRNA_Prot/zebrafish.1.protein.faa.gz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 13.3M  100 13.3M    0     0  8896k      0  0:00:01  0:00:01 --:--:-- 8891k
+tb170077@js-16-123:~/work$ who
+tb170077 pts/0        2019-05-24 17:00 (69.196.33.198)
+tb170077@js-16-123:~/work$ pwd
+/home/tb170077/work
+tb170077@js-16-123:~/work$ ls
+mouse.1.protein.faa.gz  mouse.2.protein.faa.gz  zebrafish.1.protein.faa.gz
+tb170077@js-16-123:~/work$ gunzip *.gz
+tb170077@js-16-123:~/work$ ls
+mouse.1.protein.faa  mouse.2.protein.faa  zebrafish.1.protein.faa
+tb170077@js-16-123:~/work$ less mouse.1.protein.faa 
+tb170077@js-16-123:~/work$ grep -c ">" mouse.1.protein.faa 
+53022
+tb170077@js-16-123:~/work$ grep -c "^>" mouse.1.protein.faa 
+53022
+tb170077@js-16-123:~/work$ grep -c "^>" *.faa
+mouse.1.protein.faa:53022
+mouse.2.protein.faa:24640
+zebrafish.1.protein.faa:52966
+tb170077@js-16-123:~/work$ head -11 mouse.1.protein.faa > mm-first.fa
+tb170077@js-16-123:~/work$ ls
+mm-first.fa  mouse.1.protein.faa  mouse.2.protein.faa  zebrafish.1.protein.faa
+tb170077@js-16-123:~/work$ grep -c "^>" *.fa
+2
+tb170077@js-16-123:~/work$ makeblastdb -in zebrafish.1.protein.faa -dbtype prot
+
+
+Building a new DB, current time: 05/24/2019 17:26:29
+New DB name:   /home/tb170077/work/zebrafish.1.protein.faa
+New DB title:  zebrafish.1.protein.faa
+Sequence type: Protein
+Keep MBits: T
+Maximum file size: 1000000000B
+Adding sequences from FASTA; added 52966 sequences in 1.96403 seconds.
+tb170077@js-16-123:~/work$ ls
+mm-first.fa          mouse.2.protein.faa      zebrafish.1.protein.faa.phr  zebrafish.1.protein.faa.psq
+mouse.1.protein.faa  zebrafish.1.protein.faa  zebrafish.1.protein.faa.pin
+tb170077@js-16-123:~/work$ blastp -query mm-first.fa -db zebrafish.1.protein.faa
+BLASTP 2.6.0+
+
+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro A.
+Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J.
+Lipman (1997), "Gapped BLAST and PSI-BLAST: a new generation of
+protein database search programs", Nucleic Acids Res. 25:3389-3402.
+
+
+Reference for composition-based statistics: Alejandro A. Schaffer,
+L. Aravind, Thomas L. Madden, Sergei Shavirin, John L. Spouge, Yuri
+I. Wolf, Eugene V. Koonin, and Stephen F. Altschul (2001),
+"Improving the accuracy of PSI-BLAST protein database searches with
+composition-based statistics and other refinements", Nucleic Acids
+Res. 29:2994-3005.
+
+
+
+Database: zebrafish.1.protein.faa
+           52,966 sequences; 38,538,759 total letters
+
+
+
+Query= YP_220550.1 NADH dehydrogenase subunit 1 (mitochondrion) [Mus
+musculus domesticus]
+
+Length=318
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+  NP_059331.1 NADH dehydrogenase subunit 1 (mitochondrion) [Danio...  426     1e-150
+
+
+> NP_059331.1 NADH dehydrogenase subunit 1 (mitochondrion) [Danio 
+rerio]
+Length=324
+
+ Score = 426 bits (1096),  Expect = 1e-150, Method: Compositional matrix adjust.
+ Identities = 216/313 (69%), Positives = 263/313 (84%), Gaps = 0/313 (0%)
+
+Query  4    INILTLLVPILIAMAFLTLVERKILGYMQLRKGPNIVGPYGILQPFADAMKLFMKEPMRP  63
+            IN L   VP+LIA+AFLTLVERK+LGYMQLRKGPN++GP G+LQ  AD +KLF+KEP+RP
+Sbjct  10   INPLAYAVPVLIAVAFLTLVERKVLGYMQLRKGPNVMGPRGLLQSVADGVKLFIKEPIRP  69
+
+Query  64   LTTSMSLFIIAPTLSLTLALSLWVPLPMPHPLINLNLGILFILATSSLSVYSILWSGWAS  123
+               S  LF+ AP L+L LA+ LW P+PMP+P+++LNLGILFI+A SSL+VYSIL SGWAS
+Sbjct  70   SMASPILFLTAPVLALILAMMLWAPMPMPYPVLDLNLGILFIMAISSLAVYSILGSGWAS  129
+
+Query  124  NSKYSLFGALRAVAQTISYEVTMAIILLSVLLMNGSYSLQTLITTQEHMWLLLPAWPMAM  183
+            NSKY+L GALRAVAQTISYEV++ +ILLS ++ +G Y+LQT  TTQE  WLLLP WP+A+
+Sbjct  130  NSKYALIGALRAVAQTISYEVSLGLILLSAVIFSGGYTLQTFNTTQEDTWLLLPLWPLAI  189
+
+Query  184  MWFISTLAETNRAPFDLTEGESELVSGFNVEYAAGPFALFFMAEYTNIILMNALTTIIFL  243
+            MWFISTLAETNRAPFDLTEGESELVSGFNVEYAAGPFALFF+AEY+NI+LMN  +T++FL
+Sbjct  190  MWFISTLAETNRAPFDLTEGESELVSGFNVEYAAGPFALFFLAEYSNILLMNTHSTVLFL  249
+
+Query  244  GPLYYINLPELYSTNFMMEALLLSSTFLWIRASYPRFRYDQLMHLLWKNFLPLTLALCMW  303
+            G  +  + PEL + +   +  +LS  FLW+RASYPRFRYDQLMHL+WKNFLP+TL L +W
+Sbjct  250  GASFTPDAPELMTISIATKTAMLSILFLWMRASYPRFRYDQLMHLIWKNFLPITLVLVLW  309
+
+Query  304  HISLPIFTAGVPP  316
+            HI+LPI  AG+PP
+Sbjct  310  HIALPIALAGLPP  322
+
+
+
+Lambda      K        H        a         alpha
+   0.328    0.140    0.437    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 6891870510
+
+
+Query= YP_220551.1 NADH dehydrogenase subunit 2 (mitochondrion) [Mus
+musculus domesticus]
+
+Length=345
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+  NP_059332.1 NADH dehydrogenase subunit 2 (mitochondrion) [Danio...  279     9e-92
+  NP_059341.1 NADH dehydrogenase subunit 5 (mitochondrion) [Danio...  49.7    5e-06
+  NP_059340.1 NADH dehydrogenase subunit 4 (mitochondrion) [Danio...  35.8    0.10 
+
+
+> NP_059332.1 NADH dehydrogenase subunit 2 (mitochondrion) [Danio 
+rerio]
+Length=348
+
+ Score = 279 bits (713),  Expect = 9e-92, Method: Compositional matrix adjust.
+ Identities = 154/346 (45%), Positives = 224/346 (65%), Gaps = 4/346 (1%)
+
+Query  1    MNPITLAIIYFTIFLGPVITMSSTNLMLMWVGLEFSLLAIIPMLINKKNPRSTEAATKYF  60
+            MNP  L I+  ++ LG  +T SS++ +L W+GLE + LAI+P++  + +PR+ EA TKYF
+Sbjct  1    MNPYVLMILMSSLGLGTTLTFSSSHWILAWMGLEINTLAIVPLMAQQHHPRAVEATTKYF  60
+
+Query  61   VTQATASMIILLAIVLNYKQLGTWMFQQQTNGLILNMTLMALSMKLGLAPFHFWLPEVTQ  120
+            + QA A+ +IL     N    G W              + AL++K+GLAP HFWLPEV Q
+Sbjct  61   LIQAAAAAMILFTSTTNAWISGQWDVTGMPGPATSTAMMFALALKIGLAPMHFWLPEVLQ  120
+
+Query  121  GIPLHMGLILLTWQKIAPLSILIQIYPLLNSTIILMLAITSIFMGAWGGLNQTQMRKIMA  180
+            G+ L  GLIL TWQK+AP++++IQ     +  I+  L I S  +G W GLNQTQ+RKI+A
+Sbjct  121  GLDLLTGLILSTWQKLAPMALIIQTTQTTDPLILTSLGIASSLIGGWSGLNQTQLRKILA  180
+
+Query  181  YSSIAHMGWMLAILPYNPSLTLLNLMIYIILTAPMFMALMLNNSMTINSISLLWNKTPAM  240
+            YSSIAHMGWM+ ++ Y P LTL+ L  YI +T+  F+ L + ++  IN+++  W K+P +
+Sbjct  181  YSSIAHMGWMIIVIQYAPQLTLIALGTYIFMTSAAFLTLKVLSATKINTLTTTWPKSPIL  240
+
+Query  241  LTMISLMLLSLGGLPPLTGFLPKWIIITELMKNNCLIMATLMAMMALLNLFFYTRLIYST  300
+              + +L++LSLGGLPPLTGF+PKW+I+ EL K +    AT+MA+ ALL+LFFY RL ++ 
+Sbjct  241  AAIATLVMLSLGGLPPLTGFMPKWLILQELTKQDLPATATIMALTALLSLFFYLRLCHAM  300
+
+Query  301  SLTMFPTNNNSKMMTH-QTKTKPNLMFSTLAIMSTMT-LPLAPQLI  344
+            +LT  P   NS    H + +T  N +  T+++  TM  LPL P ++
+Sbjct  301  TLTTSPNTINSA--PHWRVQTTQNSLPLTISVTVTMGLLPLTPAIL  344
+
+
+> NP_059341.1 NADH dehydrogenase subunit 5 (mitochondrion) [Danio 
+rerio]
+Length=606
+
+ Score = 49.7 bits (117),  Expect = 5e-06, Method: Compositional matrix adjust.
+ Identities = 40/163 (25%), Positives = 75/163 (46%), Gaps = 11/163 (7%)
+
+Query  112  HFWLPEVTQGIPLHMGLILLTWQKIAPLSILIQIYPLLNS-----TIILMLAITSIFMGA  166
+            H WLP   +G      L+  +   +A + +LI+++P++ +     TI L L   +    A
+Sbjct  231  HPWLPSAMEGPTPVSALLHSSTMVVAGIFLLIRLHPIMETNKLAPTICLCLGALTTLFAA  290
+
+Query  167  WGGLNQTQMRKIMAYSSIAHMGWMLAILPYN-PSLTLLNLMIYIILTAPMFMA-----LM  220
+               L Q  ++KI+A+S+ + +G M+  +  N P L   ++  +    A +F+        
+Sbjct  291  TCALTQNDIKKIVAFSTSSQLGLMMVAIGLNQPHLAFFHICTHAFFKAMLFLCSGAIIHS  350
+
+Query  221  LNNSMTINSISLLWNKTPAMLTMISLMLLSLGGLPPLTGFLPK  263
+            LNN   I  +   ++  P     +++  ++L G P L GF  K
+Sbjct  351  LNNEQDIRKMGGTYHTLPMTTNYLTIGKMALMGTPFLAGFFSK  393
+
+
+> NP_059340.1 NADH dehydrogenase subunit 4 (mitochondrion) [Danio 
+rerio]
+Length=460
+
+ Score = 35.8 bits (81),  Expect = 0.10, Method: Compositional matrix adjust.
+ Identities = 26/97 (27%), Positives = 47/97 (48%), Gaps = 6/97 (6%)
+
+Query  98   TLMALSMKLGLAPFHFWLPEVTQGIPLH----MGLILLTWQKIAPLSILIQIYPLLNSTI  153
+             L+A  +K+ L   H WLP+     P+     +  +LL       + +++ + PL     
+Sbjct  200  CLIAFLVKMPLYGMHLWLPKAHVEAPVAGSMILAAVLLKLGGYGMMRMMVMLDPLSKQLA  259
+
+Query  154  --ILMLAITSIFMGAWGGLNQTQMRKIMAYSSIAHMG  188
+               ++LA+  + M     L QT ++ ++AYSS+ HMG
+Sbjct  260  YPFIILALWGVIMTGLVCLRQTDLKSLIAYSSVGHMG  296
+
+
+
+Lambda      K        H        a         alpha
+   0.328    0.137    0.410    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 7732649740
+
+
+  Database: zebrafish.1.protein.faa
+    Posted date:  May 24, 2019  5:26 PM
+  Number of letters in database: 38,538,759
+  Number of sequences in database:  52,966
+
+
+
+Matrix: BLOSUM62
+Gap Penalties: Existence: 11, Extension: 1
+Neighboring words threshold: 11
+Window for multiple hits: 40
+tb170077@js-16-123:~/work$ head -497 mouse.1.protein.faa > mm-second.fa
+tb170077@js-16-123:~/work$ blastp -query mm-second.fa -db zebrafish.1.protein.faa -out mm-second.x.zebrafish.txt
+less mm-second.x.zebrafish.txt
+tb170077@js-16-123:~/work$ less mm-second.x.zebrafish.txt
+tb170077@js-16-123:~/work$ bg
+-bash: bg: current: no such job
+tb170077@js-16-123:~/work$ ps
+  PID TTY          TIME CMD
+18423 pts/0    00:00:00 bash
+22200 pts/0    00:00:00 ps
+tb170077@js-16-123:~/work$ blastp -query mm-second.fa -db zebrafish.1.protein.faa -out mm-second.x.zebrafish.tsv -outfmt 6
+bg
+tb170077@js-16-123:~/work$ bg
+-bash: bg: current: no such job
+tb170077@js-16-123:~/work$ bg
+-bash: bg: current: no such job
+tb170077@js-16-123:~/work$ ls
+mm-first.fa   mm-second.x.zebrafish.tsv  mouse.1.protein.faa  zebrafish.1.protein.faa      zebrafish.1.protein.faa.pin
+mm-second.fa  mm-second.x.zebrafish.txt  mouse.2.protein.faa  zebrafish.1.protein.faa.phr  zebrafish.1.protein.faa.psq
+tb170077@js-16-123:~/work$ head mm-second.x.zebrafish.tsv
+YP_220550.1	NP_059331.1	69.010	313	97	0	4	316	10	322	1.24e-150	426
+YP_220551.1	NP_059332.1	44.509	346	188	3	1	344	1	344	8.62e-92	279
+YP_220551.1	NP_059341.1	24.540	163	112	3	112	263	231	393	5.15e-06	49.7
+YP_220551.1	NP_059340.1	26.804	97	65	2	98	188	200	296	0.10	35.8
+YP_220552.1	NP_059333.1	88.132	514	61	0	1	514	1	514	0.0	877
+YP_220552.1	XP_021326074.1	31.818	66	32	2	427	482	16	78	6.7	29.3
+YP_220552.1	XP_005162943.1	31.818	66	32	2	427	482	48	110	7.5	29.6
+YP_220553.1	NP_059334.1	70.925	227	66	0	1	227	1	227	2.97e-127	360
+YP_220553.1	NP_001038725.1	28.571	70	46	2	15	84	261	326	1.8	31.2
+YP_220553.1	XP_005161478.1	28.571	70	46	2	15	84	261	326	1.9	31.2
+tb170077@js-16-123:~/work$ pwd
+/home/tb170077/work
+tb170077@js-16-123:~/work$ sudo apt-get update && sudo apt-get -y install gdebi-core r-base
+Get:1 http://security.ubuntu.com/ubuntu bionic-security InRelease [88.7 kB]
+Ign:2 https://packages.irods.org/apt xenial InRelease                                                                             
+Hit:3 https://packages.irods.org/apt xenial Release                                                                                                
+Hit:5 http://nova.clouds.archive.ubuntu.com/ubuntu bionic InRelease                                                                                
+Get:6 http://nova.clouds.archive.ubuntu.com/ubuntu bionic-updates InRelease [88.7 kB]              
+Hit:7 http://nova.clouds.archive.ubuntu.com/ubuntu bionic-backports InRelease      
+Hit:8 http://ppa.launchpad.net/ansible/ansible/ubuntu bionic InRelease        
+Fetched 177 kB in 1s (134 kB/s)
+Reading package lists... Done
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+gdebi-core is already the newest version (0.9.5.7+nmu2).
+r-base is already the newest version (3.4.4-1ubuntu1).
+0 upgraded, 0 newly installed, 0 to remove and 1 not upgraded.
+tb170077@js-16-123:~/work$ wget https://download2.rstudio.org/rstudio-server-1.1.453-amd64.deb  
+--2019-05-24 17:40:08--  https://download2.rstudio.org/rstudio-server-1.1.453-amd64.deb
+Resolving download2.rstudio.org (download2.rstudio.org)... 143.204.158.75, 143.204.158.46, 143.204.158.20, ...
+Connecting to download2.rstudio.org (download2.rstudio.org)|143.204.158.75|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 63549182 (61M) [application/x-deb]
+Saving to: ‘rstudio-server-1.1.453-amd64.deb’
+
+rstudio-server-1.1.453-amd64.deb          100%[==================================================================================>]  60.60M  32.4MB/s    in 1.9s    
+
+2019-05-24 17:40:10 (32.4 MB/s) - ‘rstudio-server-1.1.453-amd64.deb’ saved [63549182/63549182]
+
+tb170077@js-16-123:~/work$ sudo gdebi rstudio-server-1.1.453-amd64.deb
+Reading package lists... Done
+Building dependency tree        
+Reading state information... Done
+This package is uninstallable
+A later version is already installed
+tb170077@js-16-123:~/work$ rstudio-server status
+● rstudio-server.service - RStudio Server
+   Loaded: loaded (/etc/systemd/system/rstudio-server.service; enabled; vendor preset: enabled)
+   Active: active (running) since Fri 2019-05-24 13:14:56 CDT; 4h 25min ago
+ Main PID: 874 (rserver)
+    Tasks: 3 (limit: 2361)
+   CGroup: /system.slice/rstudio-server.service
+           └─874 /usr/lib/rstudio-server/bin/rserver
+
+Warning: Journal has been rotated since unit was started. Log output is incomplete or unavailable.
+tb170077@js-16-123:~/work$ echo My RStudio Web server is running at: http://$(hostname):8787/
+My RStudio Web server is running at: http://js-16-123.jetstream-cloud.org:8787/
+tb170077@js-16-123:~/work$ sudo passwd tb170077
+Enter new UNIX password: 
+Retype new UNIX password: 
+passwd: password updated successfully
+tb170077@js-16-123:~/work$ R
+
+R version 3.4.4 (2018-03-15) -- "Someone to Lean On"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> 
