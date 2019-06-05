@@ -1,0 +1,29 @@
+---
+title: "BGGN213_FAG"
+author: "Yutao Wen"
+date: "6/4/2019"
+output: github_document
+---
+
+```{r}
+library(bio3d)
+align <- read.fasta("muscle-I20190531-021744-0544-80951647-p2m.fst")
+mat <- seqidentity(alignment = align)
+heatmap(mat, margins=c(8,5))
+```
+
+```{r}
+cons <- consensus(align)
+bla <- blast.pdb(cons$seq,database = "pdb")
+```
+
+```{r}
+raw <- bla$hit.tbl
+ids <- raw$subjectids
+ids
+```
+
+```{r}
+pdb.annotate(ids = ids)
+```
+
