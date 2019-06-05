@@ -20,3 +20,14 @@ My class contents include:
 
 - Class 12: [**Bioinformatics in drug discovery and design**](https://github.com/aliyutao/BGGN213/blob/master/Class12/BGGN213_Class12.md)
 
+- Class 13: [**Genome informatics & high throughput screening**](https://github.com/aliyutao/BGGN213/blob/master/Class13/BGGN213_Class13.md)
+
+- Class 14: [**Transcriptomics and the analysis of RNA-Seq data**]
+
+- Class 15: [**Genome annotation**](https://github.com/aliyutao/BGGN213/blob/master/Class15/BGGN213_Class15.md#bggn213_class15)
+
+- Class 16: [**UNIX**]
+
+- Class 17: [**Biological network analysis**]
+
+- Class 18: [**Cancer genomics**]
