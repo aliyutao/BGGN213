@@ -30,4 +30,4 @@ My class contents include:
 
 - Class 17: [**Biological network analysis**](https://github.com/aliyutao/BGGN213/blob/master/Class17/BGGN213_Class17.md)
 
-- Class 18: [**Cancer genomics**]
+- Class 18: [**Cancer genomics**](https://github.com/aliyutao/BGGN213/blob/master/Class18/BGGN213_Class18.md)
