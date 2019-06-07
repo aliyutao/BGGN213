@@ -22,7 +22,7 @@ My class contents include:
 
 - Class 13: [**Genome informatics & high throughput screening**](https://github.com/aliyutao/BGGN213/blob/master/Class13/BGGN213_Class13.md)
 
-- Class 14: [**Transcriptomics and the analysis of RNA-Seq data**]
+- Class 14: [**Transcriptomics and the analysis of RNA-Seq data**](https://github.com/aliyutao/BGGN213/blob/master/Class14/BGGN213_Class14.md)
 
 - Class 15: [**Genome annotation**](https://github.com/aliyutao/BGGN213/blob/master/Class15/BGGN213_Class15.md#bggn213_class15)
 
