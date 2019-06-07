@@ -28,6 +28,6 @@ My class contents include:
 
 - Class 16: [**UNIX**]
 
-- Class 17: [**Biological network analysis**]
+- Class 17: [**Biological network analysis**](https://github.com/aliyutao/BGGN213/blob/master/Class17/BGGN213_Class17.md)
 
 - Class 18: [**Cancer genomics**]
