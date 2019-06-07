@@ -4,7 +4,7 @@ My hands-on couresework from [BGGN213 at UC San Diego](https://bioboot.github.io
 
 
 My class contents include:
-- Class 05: [**R graphics**]
+- Class 05: [**R graphics**](https://github.com/aliyutao/BGGN213/blob/master/Class5/BGGN213_Class5.md)
 
 - Class 06: [**R functions**](https://github.com/aliyutao/BGGN213/blob/master/Class6/BGGN213_Class6.md#190419-class6-r-functions)
 
