@@ -10,6 +10,13 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
+library(BiocManager)
+library(DESeq2)
+library("AnnotationDbi")
+library("org.Hs.eg.db")
+```
+
+```{r}
 counts <- read.csv("airway_scaledcounts.csv", stringsAsFactors = FALSE)
 metadata <- read.csv("airway_metadata.csv", stringsAsFactors = FALSE)
 View(counts)
@@ -94,14 +101,7 @@ anno <- read.csv("annotables_grch38.csv")
 mycounts.anno <- merge(x=my.counts, y=anno, by.x="row.names", by.y="ensgene")
 ```
 
-```{r}
-library("AnnotationDbi")
-library("org.Hs.eg.db")
-```
 
-```{r}
-columns(org.Hs.eg.db)
-```
 
 ```{r}
 mycounts.anno$symbol <- mapIds(org.Hs.eg.db,
